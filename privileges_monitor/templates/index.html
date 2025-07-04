@@ -1,0 +1,110 @@
+     <!DOCTYPE html>
+<html>
+<head>
+    <title>User Privilege Manager</title>
+    <style>
+        body {
+            background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: Arial, sans-serif;
+            color: #000;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        form {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px 40px;
+            border-radius: 12px;
+            width: 400px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.3);
+            box-sizing: border-box;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input[type="text"], select {
+            margin-top: 6px;
+            padding: 10px;
+            width: 100%;
+            border: 1px solid #aaa;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 1rem;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px;
+            width: 100%;
+            border: none;
+            border-radius: 8px;
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .message {
+            margin-top: 20px;
+            padding: 12px;
+            background-color: #e7f5e6;
+            border: 1px solid #4CAF50;
+            color: #2d662d;
+            font-weight: bold;
+            border-radius: 6px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <form method="POST">
+        <h2>👤 MySQL User Privileges Manager</h2>
+
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Password (only for Create User):</label>
+        <input type="text" id="password" name="password" placeholder="Enter password">
+
+        <label for="privilege">Privilege (for Grant/Revoke):</label>
+        <select id="privilege" name="privilege">
+            <option value="SELECT">SELECT</option>
+            <option value="INSERT">INSERT</option>
+            <option value="UPDATE">UPDATE</option>
+            <option value="DELETE">DELETE</option>
+            <option value="ALL PRIVILEGES">ALL PRIVILEGES</option>
+        </select>
+
+        <button type="submit" name="action" value="create">Create User</button>
+        <button type="submit" name="action" value="grant">Grant Privilege</button>
+        <button type="submit" name="action" value="revoke">Revoke Privilege</button>
+
+        {% if message %}
+        <div class="message">{{ message }}</div>
+        {% endif %}
+    </form>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DBMS Tuning Monitor</title>
+</head>
+<body>
+    <h2>🔧 MySQL Server Monitor Dashboard</h2>
+
+    <h3>📊 Global Status:</h3>
+    <table border="1">
+        <tr><th>Variable</th><th>Value</th></tr>
+        {% for row in status %}
+        <tr><td>{{ row[0] }}</td><td>{{ row[1] }}</td></tr>
+        {% endfor %}
+    </table>
+
+    <h3>⚙️ Server Configuration Variables:</h3>
+    <table border="1">
+        <tr><th>Variable</th><th>Value</th></tr>
+        {% for row in variables %}
+        <tr><td>{{ row[0] }}</td><td>{{ row[1] }}</td></tr>
+        {% endfor %}
+    </table>
+
+    <h3>🔄 Running Queries (Processlist):</h3>
+    <table border="1">
+        <tr>
+            <th>ID</th><th>User</th><th>Host</th><th>DB</th><th>Command</th>
+            <th>Time</th><th>State</th><th>Info</th>
+        </tr>
+        {% for row in processlist %}
+        <tr>
+            {% for col in row %}
+            <td>{{ col }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
