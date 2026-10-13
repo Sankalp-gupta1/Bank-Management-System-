@@ -4,7 +4,7 @@ A banking transaction project focused on safe transfers, rollback behavior and a
 
 ## Live demo
 
-**https://bank-transaction-lab.vercel.app/**
+**https://bank-management-sankalp.vercel.app/**
 
 The public demo is a browser-based transaction sandbox.
 
@@ -89,3 +89,37 @@ Do not commit a real database password to GitHub.
 
 - GitHub: https://github.com/Sankalp-gupta1
 - LinkedIn: https://www.linkedin.com/in/sankalp-gupta-rishi-8617302b0/
+
+
+## Run the web demo locally
+
+The hosted portfolio version is a static web demo, so it does not need an API key or database for local preview.
+
+### Step 1 — clone the repository
+
+```bash
+git clone https://github.com/Sankalp-gupta1/Bank-Management-System-.git
+cd Bank-Management-System-
+```
+
+### Step 2 — open the deployable web folder
+
+```bash
+cd web
+```
+
+### Step 3 — start a small local server
+
+```bash
+python -m http.server 8000
+```
+
+### Step 4 — open the app
+
+```text
+http://localhost:8000
+```
+
+Production demo: **https://bank-management-sankalp.vercel.app/**
+
+The original project files are kept in the repository. The `web/` version is the browser-friendly deployment made for easy review.
