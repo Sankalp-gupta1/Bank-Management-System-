@@ -1,4 +1,23 @@
-# Bank Management System
+# Bank Management System — Transaction Lab
+
+## Live app
+
+**https://bank-transaction-lab.vercel.app/**
+
+The repository now includes a hosted transaction sandbox under `web/`. It demonstrates the core transfer behavior without requiring a public MySQL server: seeded accounts, atomic balance changes, insufficient-balance rollback, transaction audit entries, and resettable local demo state.
+
+The original **Flask + MySQL stored-procedure implementation remains intact** and is still the reference for the database/ACID architecture. The hosted browser sandbox exists so reviewers can interact with the transaction rules immediately.
+
+### Run the hosted-style demo locally
+
+```bash
+cd web
+python -m http.server 8000
+```
+
+Then open `http://localhost:8000`.
+
+---
 
 A banking transaction demo focused on safe transfers, rollback behavior and audit history.
 
