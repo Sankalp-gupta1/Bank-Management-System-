@@ -23,7 +23,6 @@ A banking transaction demo focused on safe transfers, rollback behavior and audi
 
 ## Live demo
 
-**https://bank-management-sankalp.vercel.app/**
 
 ## Original backend
 
