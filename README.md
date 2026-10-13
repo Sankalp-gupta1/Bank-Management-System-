@@ -1,130 +1,55 @@
-# Banking Transaction Manager
+# Bank Management System
 
-A Flask + MySQL banking transaction demo focused on **safe money transfers, rollback behavior, transaction logging, and ACID-style database concepts**.
+A banking transaction demo focused on safe transfers, rollback behavior and audit history.
 
-## Overview
+## Live demo
 
-The application displays bank accounts and transaction history through a web interface and delegates money transfers to a MySQL stored procedure.
+**https://bank-management-sankalp.vercel.app/**
 
-The transfer flow is designed around:
+## Original backend
 
-- balance validation
-- transactional updates
-- commit on success
-- rollback on failure
-- transaction logging
+The original project uses:
 
-## Features
-
-- Transfer money between accounts
-- View account records
-- View transaction logs
-- Commit successful transactions
-- Roll back failed transfers
-- Stored-procedure based transfer flow
-- Flask web interface
-
-## Tech Stack
-
-- Python
 - Flask
 - MySQL
-- mysql-connector-python
-- HTML / CSS
+- a `bank_system` database
+- a stored procedure for money transfer
+- transaction logging
 
-## Concepts Demonstrated
+That implementation is still preserved inside `bank-flask/`.
 
-- ACID properties
-- Database transactions
-- `COMMIT`
-- `ROLLBACK`
-- Stored procedures
-- Transaction logging
-- Error handling between Flask and MySQL
+## Deployed browser version
 
-## Project Structure
+The new `web/` version makes the transaction rules easy to test without requiring a private MySQL server.
 
-```text
-Bank-Management-System-/
-├── bank-flask/
-│   ├── app.py
-│   ├── templates/
-│   ├── static/
-│   └── project documentation
-├── dbms_monitor/
-├── privileges_monitor/
-└── README.md
-```
+It includes:
 
-## Prerequisites
+- seeded bank accounts,
+- balance display,
+- source/destination validation,
+- insufficient-balance checks,
+- atomic debit + credit behavior,
+- rollback on validation/invariant failure,
+- audit history,
+- browser persistence through `localStorage`,
+- one-click reset.
 
-- Python 3
-- MySQL Server
-- A MySQL database named `bank_system`
-- Required `accounts`, `transaction_log`, and `transfer_money` database objects
+The live page is a portfolio simulation. It is not a real banking system and does not handle real money.
 
-## Installation
-
-Clone the repository:
+## Run locally
 
 ```bash
-git clone https://github.com/Sankalp-gupta1/Bank-Management-System-.git
-cd Bank-Management-System-/bank-flask
+cd web
+python -m http.server 8000
 ```
 
-Install Python dependencies:
+Open `http://localhost:8000`.
 
-```bash
-pip install flask mysql-connector-python
-```
+## Run the original Flask + MySQL version
 
-## Database Configuration
-
-The Flask app currently connects to a local MySQL server.
-
-Before running it:
-
-1. Create/configure the `bank_system` database.
-2. Make sure the required tables and `transfer_money` stored procedure exist.
-3. Update the MySQL connection settings in `bank-flask/app.py` for your local environment.
-4. Do not commit real database passwords to a public repository.
-
-## Run
-
-```bash
-python app.py
-```
-
-Then open:
-
-```text
-http://127.0.0.1:5000
-```
-
-## Transaction Flow
-
-```text
-User submits transfer
-        │
-        ▼
-Flask calls transfer_money(...)
-        │
-        ├── success → COMMIT
-        │
-        └── error   → ROLLBACK
-        │
-        ▼
-Accounts + transaction log refreshed
-```
-
-## Screenshots
-
-![Banking UI](https://github.com/user-attachments/assets/baf00222-4923-4cfd-81c3-7c1fbe3b8655)
-
-![Transaction View](https://github.com/user-attachments/assets/8103c186-099b-41a4-9394-4907509c10c5)
+Follow the existing database setup in `bank-flask/`, create the required MySQL objects, and configure credentials locally. Do not commit real database passwords.
 
 ## Author
 
-**Sankalp Gupta**
-
+Sankalp Gupta  
 GitHub: https://github.com/Sankalp-gupta1
